@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,6 +14,43 @@ body {
   color: var(--c-primary);
 }
 
-nav.header-nav + main {
+.content {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main.main {
+  flex: 1;
+}
+
+nav.header + main {
   @apply mt-16;
+}
+
+.text-xxs {
+  font-size: 0.625rem;
+}
+
+.font-ss {
+  font-family: 'Silkscreen', cursive;
+}
+
+/* top */
+.drop {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  top: -120px;
+  margin: 0 auto;
+  animation-name: drp;
+  animation-timing-function: cubic-bezier(1,0,.91,.19);
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes drip {
+  to {
+    top: 190px;
+  }
 }
