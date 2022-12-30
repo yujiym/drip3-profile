@@ -1,6 +1,6 @@
 {
-  "name": "web",
-  "version": "0.0.0",
+  "name": "drip3-web",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,19 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.0.0",
+    "@next/font": "^13.1.1",
+    "@orbisclub/orbis-sdk": "^0.4.9",
+    "ethers": "^5.7.2",
+    "next": "13.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "*"
+    "ui": "*",
+    "wagmi": "^0.10.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "eslint": "7.32.0",
-    "eslint-config-custom": "*",
-    "tsconfig": "*",
+    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "autoprefixer": "^10.4.13",
+    "eslint": "7.32.0",
+    "eslint-config-custom": "*",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4",
+    "tsconfig": "*",
     "typescript": "^4.5.3"
   }
 }

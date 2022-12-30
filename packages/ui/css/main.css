@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- variables --- */
+:root {
+  --c-primary: #4c35de;
+  --c-semiwhite: #fbf9f8;
+}
+
+body {
+  background: var(--c-semiwhite);
+  color: var(--c-primary);
+}
+
+nav.header-nav + main {
+  @apply mt-16;
+}
