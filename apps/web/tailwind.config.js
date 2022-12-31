@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
         semiwhite: `var(--c-semiwhite)`
       },
       fontFamily: {
-        ss: ['var(--font-silkscreen)']
+        sans: ['Nunito', ...fontFamily.sans]
       }
     }
   },
