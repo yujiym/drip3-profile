@@ -1,0 +1,26 @@
+'use client'
+import { useEffect, useState } from 'react'
+import { orbis } from 'ui/hooks/useSession'
+import Post from 'ui/components/Post'
+
+export default function MyPosts() {
+  const [posts, setPosts] = useState<any[]>([])
+
+  useEffect(() => {
+    ;(async () => {
+      let { data, error } = await orbis.getPosts({ context: 'drip3.xyz_1672554656' })
+      setPosts(data)
+      console.log('--getPosts', data, error)
+    })()
+  }, [])
+
+  return posts.length > 0 ? (
+    <ul>
+      {posts.map((post: any, i: number) => (
+        <Post post={post} />
+      ))}
+    </ul>
+  ) : (
+    <p>No posts.</p>
+  )
+}

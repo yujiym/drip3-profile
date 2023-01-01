@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { SaveIcon, SearchIcon, HomeIcon, WalletIcon } from 'ui/components/icons'
+import ConnectButton from 'ui/components/ConnectButton'
 
 export default function HeaderNav() {
   return (
@@ -31,35 +32,23 @@ export default function HeaderNav() {
           </svg>
           <h1 className="font-ss text-xl">DRIP3</h1>
         </Link>
-        <div className="inline-flex order-2">
-          <button
-            type="button"
-            className="text-semiwhite bg-primary font-medium text-sm px-5 py-2 text-center"
-          >
-            <span className="nline-flex md:hidden">
-              <WalletIcon />
-            </span>
-            <span className="hidden md:inline-flex">Connect</span>
-          </button>
-        </div>
-        <div className="items-center justify-between flex w-auto order-1">
-          <ul className="flex p-4 flex-row space-x-8 mt-0 text-sm font-medium">
+        <div className="items-center justify-between flex w-auto">
+          <ul className="text-xs font-bold inline-flex">
             <li>
               <Link href="/home" className="block py-2 pl-3 pr-4 text-primary">
-                <HomeIcon />
+                All
               </Link>
             </li>
             <li>
-              <Link href="/explore" className="block py-2 pl-3 pr-4 text-primary">
-                <SearchIcon />
-              </Link>
-            </li>
-            <li>
-              <Link href="/saves" className="block py-2 pl-3 pr-4 text-primary">
-                <SaveIcon />
+              <Link href="/my" className="block py-2 pl-3 pr-4 text-primary">
+                My
               </Link>
             </li>
           </ul>
+        </div>
+
+        <div className="inline-flex">
+          <ConnectButton />
         </div>
       </div>
     </nav>

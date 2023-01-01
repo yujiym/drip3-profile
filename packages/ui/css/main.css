@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Silkscreen&display=swap');
+@import 'react-tooltip/dist/react-tooltip.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,6 +8,13 @@
 :root {
   --c-primary: #4c35de;
   --c-semiwhite: #fbf9f8;
+  --rt-color-white: var(--c-semiwhite);
+  --rt-color-dark: var(--c-primary);
+  --rt-color-success: #8dc572;
+  --rt-color-error: #be6464;
+  --rt-color-warning: #f0ad4e;
+  --rt-color-info: #337ab7;
+  --rt-opacity: 0.9;
 }
 
 body {
@@ -36,4 +44,18 @@ nav.header + main {
 
 .font-ss {
   font-family: 'Silkscreen', cursive;
+}
+
+.bg-stripe {
+  background-image: linear-gradient(-45deg, var(--c-semiwhite) 25%, var(--c-primary) 25%, var(--c-primary) 50%, var(--c-semiwhite) 50%, var(--c-semiwhite) 75%, var(--c-primary) 75%, var(--c-primary));
+  background-size: 4px 4px;
+}
+
+/* main */
+.btn {
+  @apply bg-primary text-semiwhite;
+}
+
+.btn-outline {
+  @apply bg-transparent text-primary border-2 border-primary font-bold;
 }
