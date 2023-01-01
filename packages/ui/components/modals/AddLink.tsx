@@ -53,7 +53,7 @@ export default function AddLinkModal() {
                   {...register('link')}
                 />
               </div>
-              <p className="text-xs text-right mt-1 opacity-80">{errors.link?.message}</p>
+              <p className="text-xs text-right mt-1 opacity-80">{errors.link?.message as string}</p>
               <div className="relative flex items-center mt-2">
                 <ChatIcon klass="absolute text-primary mx-2 -mb-1" />
                 <input
@@ -62,7 +62,9 @@ export default function AddLinkModal() {
                   {...register('comment')}
                 />
               </div>
-              <p className="text-xs text-right mt-1 opacity-80">{errors.comment?.message}</p>
+              <p className="text-xs text-right mt-1 opacity-80">
+                {errors.comment?.message as string}
+              </p>
             </div>
             <button
               type="submit"
