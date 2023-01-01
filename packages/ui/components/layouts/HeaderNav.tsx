@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { SaveIcon, SearchIcon, HomeIcon, WalletIcon } from 'ui/components/icons'
 import ConnectButton from 'ui/components/ConnectButton'
