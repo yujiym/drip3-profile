@@ -1,4 +1,4 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import Image from 'next/image'
 
 const SoonIcon = (): React.ReactElement => (
@@ -43,9 +43,9 @@ export default function TopPage() {
               <SoonIcon />
             </li>
           </ul>
-          <Link className="font-ss text-lg border-2 pr-5 pl-6 py-2 mt-16 inline-block" href="/home">
+          <a className="font-ss text-lg border-2 pr-5 pl-6 py-2 mt-16 inline-block" href="/home">
             Start &rarr;
-          </Link>
+          </a>
         </div>
       </div>
     </div>

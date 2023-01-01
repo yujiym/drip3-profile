@@ -1,12 +1,10 @@
-import Link from 'next/link'
-// import { SaveIcon, SearchIcon, HomeIcon, WalletIcon } from 'ui/components/icons'
 import ConnectButton from 'ui/components/ConnectButton'
 
 export default function HeaderNav() {
   return (
     <nav className="header bg-semiwhite px-3 fixed w-full z-20 top-0 left-0 border-b border-primary h-16 overflow-hidden">
       <div className="h-full flex flex-nowrap items-center justify-between mx-auto">
-        <Link href="/home" className="flex items-center">
+        <a href="/home" className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fillRule="evenodd"
@@ -30,18 +28,18 @@ export default function HeaderNav() {
             </g>
           </svg>
           <h1 className="font-ss text-xl">DRIP3</h1>
-        </Link>
+        </a>
         <div className="items-center justify-between flex w-auto">
           <ul className="text-xs font-bold inline-flex">
             <li>
-              <Link href="/home" className="block py-2 pl-3 pr-4 text-primary">
+              <a href="/home" className="block py-2 pl-3 pr-4 text-primary">
                 All
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="/my" className="block py-2 pl-3 pr-4 text-primary">
+              <a href="/my" className="block py-2 pl-3 pr-4 text-primary">
                 My
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
