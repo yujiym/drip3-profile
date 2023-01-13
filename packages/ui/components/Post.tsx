@@ -1,10 +1,10 @@
 'use client'
 import { ChatIcon } from 'ui/components/icons'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
 import { shortAddress } from '../store'
+import { unixToFromNow } from 'lib/date'
 
-dayjs.extend(relativeTime)
+const getImageUrl = (link: string): string =>
+  link.match(/^https?:\/{2,}/) ? link : `${link.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[0]}link`
 
 export default function Post({ post }: { post: any }) {
   const title: string = post.indexing_metadata?.urlMetadata?.title ?? post.content.body
@@ -12,10 +12,12 @@ export default function Post({ post }: { post: any }) {
   const image: string = post.indexing_metadata?.urlMetadata?.image ?? ''
   const listStyle = image
     ? {
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${getImageUrl(image)})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'right center',
-        backgroundSize: 'contain'
+        backgroundSize: 'contain',
+        backgroundColor: 'rgba(251,249,248,0.5)',
+        backgroundBlendMode: 'lighten'
       }
     : {}
   console.log(listStyle)
@@ -36,7 +38,7 @@ export default function Post({ post }: { post: any }) {
             {post.content.data?.comment}
           </span>
         )}
-        <span className="ml-4">{dayjs.unix(post.timestamp).fromNow()}</span>
+        <span className="ml-4">{unixToFromNow(post.timestamp)}</span>
       </div>
     </li>
   )
