@@ -1,7 +1,10 @@
-console.log("content loaded");
+function injectScript(file_path, tag) {
+  var node = document.getElementsByTagName(tag)[0]
+  var script = document.createElement('script')
+  script.setAttribute('type', 'text/javascript')
+  script.setAttribute('src', file_path)
+  node.appendChild(script)
+}
 
-/**
- * @description
- * Chrome extensions don't support modules in content scripts.
- */
-import("./components/Demo");
+injectScript(chrome.runtime.getURL('src/pages/contentEmbed/index.js'), 'body')
+console.log('ingect!!')

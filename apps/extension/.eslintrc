@@ -8,7 +8,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:tailwindcss"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -18,7 +19,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "tailwindcss"],
   "rules": {
     "react/react-in-jsx-scope": "off"
   },
