@@ -7,6 +7,7 @@ import { sessionAtom, sessionLoadedAtom } from 'ui/atoms'
 export let orbis = new Orbis()
 
 export default function useInitialSession() {
+  console.log('init', globalThis)
   const [session, setSession] = useAtom(sessionAtom)
   const setLoaded = useSetAtom(sessionLoadedAtom)
 

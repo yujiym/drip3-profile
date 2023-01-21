@@ -2,10 +2,11 @@ import Layout from '../components/Layout'
 import Spinner from '../components/Spinner'
 import ConversationLists from '../components/ConversationLists'
 import FloatingButton from '../components/FloatingButton'
+import Nodata from '../components/Nodata'
 import useConversations from 'ui/hooks/useConversations'
-import { BoxSelectIcon, MailPlusIcon } from 'lucide-react'
+import { MailPlusIcon } from 'lucide-react'
 
-const Messages = () => {
+const Conversations = () => {
   const { loading, data, count } = useConversations()
 
   return (
@@ -14,23 +15,16 @@ const Messages = () => {
         {loading ? (
           <Spinner klass="mt-48" />
         ) : count > 0 ? (
-          <>
-            <ConversationLists data={data} />
-            <FloatingButton>
-              <MailPlusIcon size={22} />
-            </FloatingButton>
-          </>
+          <ConversationLists data={data} />
         ) : (
-          <div className="mt-48 flex justify-center items-center">
-            <div>
-              <BoxSelectIcon />
-              No Data
-            </div>
-          </div>
+          <Nodata text="No conversations" />
         )}
+        <FloatingButton>
+          <MailPlusIcon size={22} />
+        </FloatingButton>
       </>
     </Layout>
   )
 }
 
-export default Messages
+export default Conversations

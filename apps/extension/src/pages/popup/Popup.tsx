@@ -5,7 +5,8 @@ import { useAtomsDebugValue } from 'jotai-devtools'
 import TopPage from './pages/Top'
 import HomePage from './pages/Home'
 import BookmarksPage from './pages/Bookmarks'
-import MessagesPage from './pages/Messages'
+import ConversationsPage from './pages/Conversations'
+import ConversationPage from './pages/Conversation'
 import ProfilePage from './pages/Profile'
 import Loading from './components/Loading'
 import useSession from 'ui/hooks/useSession'
@@ -16,26 +17,34 @@ const DebugAtoms = () => {
   useAtomsDebugValue()
   return null
 }
+
+const RootRouter = () => {
+  const { isConnected } = useSession()
+
+  return (
+    <MemoryRouter>
+      <Routes>
+        <Route path="/" element={isConnected ? <HomePage /> : <TopPage />} />
+        <Route path="b" element={<BookmarksPage />} />
+        <Route path="m">
+          <Route index element={<ConversationsPage />} />
+          <Route path=":conversationId" element={<ConversationPage />} />
+        </Route>
+        <Route path="u/me" element={<ProfilePage tab="links" me />} />
+        <Route path="u/me/b" element={<ProfilePage tab="bookmarks" me />} />
+      </Routes>
+    </MemoryRouter>
+  )
+}
+
 const Popup = () => {
   useInitialSession()
-  const { isConnected } = useSession()
   const loaded = useAtomValue(sessionLoadedAtom)
 
   return (
     <div className="App">
       {loaded ? (
-        <MemoryRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={isConnected ? <HomePage /> : <TopPage />}
-            />
-            <Route path="b" element={<BookmarksPage />} />
-            <Route path="m" element={<MessagesPage />} />
-            <Route path="u/me" element={<ProfilePage tab="links" me />} />
-            <Route path="u/me/b" element={<ProfilePage tab="bookmarks" me />} />
-          </Routes>
-        </MemoryRouter>
+        <RootRouter />
       ) : (
         <div className="min-h-screen w-full bg-primary">
           <Loading />

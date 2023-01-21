@@ -20,6 +20,9 @@ export const postsCountAtom = atom((get) => get(postsAtom).length)
 // conversation
 export const conversationsAtom = atom<any[]>([])
 export const conversationsCountAtom = atom((get) => get(conversationsAtom).length)
+export const conversationAtom = atom<{}>({})
+export const messagesAtom = atom<any[]>([])
+export const messagesConutAtom = atom((get) => get(messagesAtom).length)
 
 // export const userNameAtom = atom(
 //   (get) =>

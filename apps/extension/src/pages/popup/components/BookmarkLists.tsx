@@ -60,9 +60,11 @@ const ListItem = ({ item }: { item: any }) => {
   )
 }
 
-const BookmarkLists = ({ data }) => {
+const BookmarkLists = ({ data, isBorderTop = false }) => {
   return (
-    <ul className="mx-2">
+    <ul
+      className={`mx-2 ${isBorderTop ? 'border-t border-indigo-900/30' : ''}`}
+    >
       {data.map((item: any, i: number) => (
         <ListItem key={`my-bookmark-list-${i}`} item={item} />
       ))}

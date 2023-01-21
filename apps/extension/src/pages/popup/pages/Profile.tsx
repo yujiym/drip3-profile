@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import ProfileLink from '../components/ProfileLink'
 import BookmarkLists from '../components/BookmarkLists'
 import useSession from 'ui/hooks/useSession'
-import { Link2Icon, ListPlusIcon, MailIcon, BookmarkIcon } from 'lucide-react'
+import { ContactIcon, ListPlusIcon, MailIcon, BookmarkIcon } from 'lucide-react'
 import useMyBookmarks from 'ui/hooks/useMyBookmarks'
 
 const listItem = [
@@ -73,19 +73,19 @@ const Profile = ({ tab = 'links', me = false }: Props) => {
                   : 'border-transparent hover:border-violet-900/50'
               }`}
             >
-              <Link2Icon size={24} />
-              <span className="text-xxs">26</span>
+              <ContactIcon size={24} />
+              <span className="text-xxs font-bold">Profile</span>
             </Link>
             <Link
               to="/u/me/b"
               className={`flex items-center flex-col px-2 mx-1 py-1 text-center flex-1 border-b-2 ${
                 tab === 'bookmarks'
                   ? 'border-primary'
-                  : 'border-transparent hover:border-violet-900/50'
+                  : 'border-transparent hover:border-violet-900/40'
               }`}
             >
               <BookmarkIcon size={22} />
-              <span className="text-xxs">{count}</span>
+              <span className="text-xxs font-bold">{count}</span>
             </Link>
             <button
               className={`flex items-center flex-col px-2 mx-1 py-1 text-center flex-1 border-b-2 border-transparent ${
@@ -93,7 +93,9 @@ const Profile = ({ tab = 'links', me = false }: Props) => {
               }`}
             >
               <MailIcon size={22} />
-              <span className="text-xxs whitespace-nowrap">Send Message</span>
+              <span className="text-xxs font-bold whitespace-nowrap">
+                Send Message
+              </span>
             </button>
           </div>
         </div>
@@ -117,7 +119,7 @@ const Profile = ({ tab = 'links', me = false }: Props) => {
             )}
           </ul>
         )}
-        {tab === 'bookmarks' && <BookmarkLists data={data} />}
+        {tab === 'bookmarks' && <BookmarkLists data={data} isBorderTop />}
       </>
     </Layout>
   )

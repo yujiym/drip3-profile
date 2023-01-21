@@ -2,8 +2,9 @@ import Layout from '../components/Layout'
 import Spinner from '../components/Spinner'
 import BookmarkLists from '../components/BookmarkLists'
 import FloatingButton from '../components/FloatingButton'
+import Nodata from '../components/Nodata'
 import useMyBookmarks from 'ui/hooks/useMyBookmarks'
-import { BoxSelectIcon, MailPlusIcon } from 'lucide-react'
+import { BookmarkPlusIcon } from 'lucide-react'
 
 const Bookmarks = () => {
   const { loading, data, count } = useMyBookmarks()
@@ -14,20 +15,13 @@ const Bookmarks = () => {
         {loading ? (
           <Spinner klass="mt-48" />
         ) : count > 0 ? (
-          <>
-            <BookmarkLists data={data} />
-            <FloatingButton>
-              <MailPlusIcon size={22} />
-            </FloatingButton>
-          </>
+          <BookmarkLists data={data} />
         ) : (
-          <div className="mt-48 flex justify-center items-center">
-            <div>
-              <BoxSelectIcon />
-              No Data
-            </div>
-          </div>
+          <Nodata text="No bookmarks" />
         )}
+        <FloatingButton>
+          <BookmarkPlusIcon size={22} />
+        </FloatingButton>
       </>
     </Layout>
   )
