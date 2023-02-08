@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "drip3-extension",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,13 +12,14 @@
     "next": "^13.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "*"
+    "@drip3/lib": "*",
+    "@drip3/react-lib": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@drip3/eslint-config-custom": "*",
+    "@drip3/tsconfig": "*",
     "eslint": "7.32.0",
-    "eslint-config-custom": "*",
-    "tsconfig": "*",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",

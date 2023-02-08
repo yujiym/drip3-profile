@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "drip3-web",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,19 +9,30 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@drip3/assets": "*",
+    "@drip3/lib": "*",
+    "@drip3/react-lib": "*",
+    "@next/font": "^13.1.6",
+    "@radix-ui/react-dialog": "^1.0.2",
+    "@radix-ui/react-radio-group": "^1.1.1",
+    "ethers": "^5.7.2",
+    "jotai": "^2.0.0",
+    "lucide-react": "^0.108.0",
     "next": "^13.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "ui": "*"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "eslint": "7.32.0",
-    "eslint-config-custom": "*",
-    "tsconfig": "*",
+    "@drip3/eslint-config-custom": "*",
+    "@drip3/tsconfig": "*",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
-    "typescript": "^4.5.3"
+    "autoprefixer": "^10.4.13",
+    "eslint": "7.32.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4"
   }
 }

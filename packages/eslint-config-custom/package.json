@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-custom",
+  "name": "@drip3/eslint-config-custom",
   "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "eslint-config-turbo": "latest"
   },
   "devDependencies": {
-    "typescript": "^4.7.4"
+    "typescript": "^4.9.4"
   },
   "publishConfig": {
     "access": "public"

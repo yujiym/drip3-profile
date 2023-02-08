@@ -1,0 +1,30 @@
+{
+  "name": "@drip3/react-lib",
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "TIMING=1 eslint \"**/*.ts*\""
+  },
+  "devDependencies": {
+    "@drip3/eslint-config-custom": "*",
+    "@drip3/tsconfig": "*",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^7.32.0",
+    "postcss": "^8.4.21",
+    "react": "^18.2.0",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@orbisclub/orbis-sdk": "^0.4.17",
+    "@radix-ui/react-menubar": "^1.0.0",
+    "@radix-ui/react-popover": "^1.0.3",
+    "ethers": "^5.7.2",
+    "jotai": "^2.0.0",
+    "wagmi": "^0.11.2"
+  }
+}

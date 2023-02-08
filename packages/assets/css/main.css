@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- variables --- */
+:root {
+  --c-primary: #6f5de4;   /* #4c35de */
+  --c-purple: #6f5de4;
+  --c-orange: #ec5b63;
+  --c-magenda: #cc3399;
+  --c-green: #33cc66;
+  --c-blue: #337acc;
+  --c-yellow: #CCC133;
+  --c-semiwhite: #fbf9f6;
+  --c-semiblack: #363c59;
+  --c-cream: #f5f0e8;
+}
+
+html {
+  background: var(--c-semiwhite);
+  color: var(--c-semiblack);
+}
+
+[data-theme="dark"] {
+  background: var(--c-semiblack);
+  color: var(--c-semiwhite);
+}
+
+body {
+  @apply font-sans;
+}
+
+/* layout */
+.content {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main.main {
+  flex: 1;
+}
+
+nav.header + main {
+  @apply mt-16;
+}
+
+/* util */
+.text-xxs {
+  font-size: 0.625rem;
+}
+
+.text-weak {
+  @apply opacity-70;
+}
+
+.bg-stripe {
+  background-image: linear-gradient(-45deg, var(--c-semiwhite) 25%, var(--c-primary) 25%, var(--c-primary) 50%, var(--c-semiwhite) 50%, var(--c-semiwhite) 75%, var(--c-primary) 75%, var(--c-primary));
+  background-size: 4px 4px;
+}
+
+.rounded-avator {
+  border-radius: 42% 45% 46% 38% / 49% 48% 39% 49%;
+}
+
+/* main */
+.btn {
+  @apply bg-primary text-semiwhite;
+}
+
+.btn-outline {
+  @apply bg-transparent text-primary border-2 border-primary font-bold;
+}
+
+.text-section-title {
+  @apply text-xl font-bold relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-repeat: repeat;
+    z-index: -1;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 75%, var(--c-primary) 75%, var(--c-primary)), linear-gradient(225deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 75%, var(--c-primary) 75%, var(--c-primary)), linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 75%, var(--c-primary) 75%, var(--c-primary)), linear-gradient(315deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 75%, var(--c-primary) 75%, var(--c-primary));
+    background-position: 0.25rem 0.25rem, 0.25rem 0.25rem, 0 0.25rem, 0 0.25rem;
+    background-size: 0.35em 0.35em;
+    left: 0;
+    top: -0.75rem;
+    height: 0.5rem;
+    width: 2.02rem;
+  }
+}
