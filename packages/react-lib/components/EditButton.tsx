@@ -16,6 +16,8 @@ type Props = {
   description?: string
   className?: string
   children?: React.ReactNode
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  submitText?: string
 }
 
 export default function EditButton({
@@ -23,6 +25,8 @@ export default function EditButton({
   description,
   className,
   children,
+  submitText = 'Save',
+  onSubmit,
   ...props
 }: Props) {
   return (
@@ -38,20 +42,24 @@ export default function EditButton({
           <Edit3 size={16} />
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          {title && <DialogTitle>{title}</DialogTitle>}
-          {description && <DialogDescription>{description}</DialogDescription>}
-        </DialogHeader>
-        {children}
-        <DialogFooter className="px-4">
-          <button
-            className="bg-primary rounded-full py-3 w-full text-semiwhite"
-            type="submit"
-          >
-            Save
-          </button>
-        </DialogFooter>
+      <DialogContent className="sm:max-w-[425px] bg-semiblack text-semiwhite bottom-0 md:bottom-auto">
+        <form onSubmit={onSubmit}>
+          <DialogHeader>
+            {title && <DialogTitle>{title}</DialogTitle>}
+            {description && (
+              <DialogDescription>{description}</DialogDescription>
+            )}
+          </DialogHeader>
+          <div className="pt-8 pb-12">{children}</div>
+          <DialogFooter className="px-4">
+            <button
+              className="bg-primary rounded-full py-3 w-full text-semiwhite"
+              type="submit"
+            >
+              {submitText}
+            </button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   )

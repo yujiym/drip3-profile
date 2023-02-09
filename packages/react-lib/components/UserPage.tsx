@@ -1,22 +1,8 @@
 import Image from 'next/image'
 import ActionMenu from '@drip3/react-lib/components/ActionMenu'
 import Post from '@drip3/react-lib/components/Post'
-import EditButton from '@drip3/react-lib/components/EditButton'
+import ProfileForm from '@drip3/react-lib/components/form/Profile'
 import { splitName } from '@drip3/lib/utils'
-import { Textarea } from '@drip3/react-lib/components/ui/Textarea'
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from '@drip3/react-lib/components/ui/RadioGroup'
-
-const colors = [
-  'bg-purple',
-  'bg-orange',
-  'bg-magenda',
-  'bg-green',
-  'bg-blue',
-  'bg-yellow',
-]
 
 const SideSection = ({ children }: { children: React.ReactNode }) => (
   <nav className="w-screen h-auto md:w-96 md:sticky md:top-0 md:h-screen md:flex md:justify-between md:flex-col">
@@ -48,62 +34,16 @@ export default function UserPage({
 
   return (
     <>
+      <style jsx global>{`
+        :root {
+          --c-primary: ${`var(--c-${profile?.details?.profile?.data?.drip3Config?.color})`};
+        }
+      `}</style>
       <div className="min-h-screen flex container mx-auto">
         <div className="flex w-full flex-col md:flex-row">
           <SideSection>
             <div className="my-12 md:my-20 mx-6 md:mx-8 relative group">
-              {mode === 'edit' && (
-                <EditButton
-                  className="absolute right-0 top-0 opacity-0 group-hover:opacity-100 group-hover:transition-opacity"
-                  title="Edit profile"
-                >
-                  <div className="pb-4">
-                    {profile?.details?.profile?.pfp ? (
-                      <Image
-                        src={profile?.details?.profile?.pfp}
-                        alt={uid}
-                        className="rounded-avator mx-auto md:mx-0"
-                        width={128}
-                        height={128}
-                      />
-                    ) : (
-                      <div
-                        className="bg-stripe w-32 h-32 rounded-avator mx-auto md:mx-0"
-                        style={{ backgroundSize: '7px 7px' }}
-                      />
-                    )}
-                  </div>
-                  <div className="pb-4">
-                    <div>
-                      <label
-                        htmlFor="description"
-                        className="text-right text-xs font-bold"
-                      >
-                        Description
-                      </label>
-                      <Textarea id="description" className="" />
-                    </div>
-                  </div>
-                  <div className="pb-8">
-                    <label
-                      htmlFor="color"
-                      className="text-right text-xs font-bold flex mb-2"
-                    >
-                      Accent color
-                    </label>
-                    <RadioGroup defaultValue={colors[0].slice(3)}>
-                      {colors.map((cl: string) => (
-                        <RadioGroupItem
-                          key={`color-${cl.slice(3)}`}
-                          value={cl.slice(3)}
-                          id={cl.slice(3)}
-                          className={cl}
-                        />
-                      ))}
-                    </RadioGroup>
-                  </div>
-                </EditButton>
-              )}
+              {mode === 'edit' && <ProfileForm profile={profile} uid={uid} />}
               {profile?.details?.profile?.pfp ? (
                 <Image
                   src={profile?.details?.profile?.pfp}

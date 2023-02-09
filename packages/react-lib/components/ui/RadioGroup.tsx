@@ -23,11 +23,19 @@ const RadioGroupItem = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Item
+      asChild
       ref={ref}
-      className={cn('h-6 w-6 rounded-full bg-primary', className)}
+      className={cn('h-6 w-6 rounded-full', className)}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator className="h-8 w-8 -mt-1 -ml-1 block rounded-full border-2 border-gray-300"></RadioGroupPrimitive.Indicator>
+      <input
+        type="radio"
+        className={cn(
+          'h-6 w-6 rounded-full appearance-none checked:border-2 checked:border-gray-300 focus:outline-none cursor-pointer',
+          className
+        )}
+        {...props}
+      />
     </RadioGroupPrimitive.Item>
   )
 })

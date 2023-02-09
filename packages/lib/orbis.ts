@@ -67,3 +67,7 @@ export async function connect() {
 export async function disconnect(): Promise<void> {
   await orbis.logout()
 }
+
+export async function updateProfile(props: object) {
+  return await orbis.updateProfile({ ...props })
+}
