@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import { useAtom } from 'jotai'
+import { modalAtom } from '@drip3/react-lib/atoms'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -33,6 +35,8 @@ const schema = z.object({
 type SchemaType = z.infer<typeof schema>
 
 export default function ProfileForm({ profile, uid }: Props) {
+  const [open, setOpen] = useAtom(modalAtom)
+
   const {
     register,
     handleSubmit,
@@ -56,6 +60,7 @@ export default function ProfileForm({ profile, uid }: Props) {
         },
       },
     })
+    setOpen(false)
   }
 
   return (
@@ -63,6 +68,8 @@ export default function ProfileForm({ profile, uid }: Props) {
       className="absolute right-0 top-0 opacity-0 group-hover:opacity-100 group-hover:transition-opacity"
       title="Edit profile"
       onSubmit={handleSubmit(onSubmit)}
+      open={open}
+      setOpen={setOpen}
     >
       <div className="pb-4">
         {profile?.details?.profile?.pfp ? (
@@ -101,17 +108,15 @@ export default function ProfileForm({ profile, uid }: Props) {
           Accent color
         </label>
         <RadioGroup defaultValue={bgColors[0].slice(3)}>
-          {bgColors.map((cl: string) => {
-            return (
-              <RadioGroupItem
-                key={`color-${cl.slice(3)}`}
-                value={cl.slice(3)}
-                id={cl.slice(3)}
-                className={cl}
-                {...register('color')}
-              />
-            )
-          })}
+          {bgColors.map((cl: string) => (
+            <RadioGroupItem
+              key={`color-${cl.slice(3)}`}
+              value={cl.slice(3)}
+              id={cl.slice(3)}
+              className={cl}
+              {...register('color')}
+            />
+          ))}
         </RadioGroup>
       </div>
     </EditButton>
