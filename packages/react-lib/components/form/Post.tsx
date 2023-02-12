@@ -80,6 +80,7 @@ export default function PostForm({ mode = 'edit', item }: Props) {
       </div>
       <div className="flex justify-end">
         <button
+          type="button"
           className="flex items-center text-red-300 px-6 py-2 mt-8 border border-red-300 rounded-full text-sm"
           onClick={() => handleDelete(item.stream_id)}
         >
