@@ -96,7 +96,7 @@ export async function deletePost(streamId: string) {
   return await orbis.deletePost(streamId)
 }
 
-const resizeFile = (file: string, size = 960) =>
+const resizeFile = (file: any, size = 960) =>
   new Promise(resolve => {
     Resizer.imageFileResizer(
       file,
