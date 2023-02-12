@@ -1,4 +1,4 @@
-import EditButton from '@drip3/react-lib/components/EditButton'
+import PostForm from '@drip3/react-lib/components/form/Post'
 
 const getImageUrl = (link: string): string =>
   link.match(/^https?:\/{2,}/)
@@ -32,7 +32,10 @@ const Card = ({ title, description, body, imgStyle }: ItemProps) => (
 )
 
 const List = ({ title, description, body, imgStyle }: ItemProps) => (
-  <div className="rounded-2xl shadow-sm bg-white overflow-hidden flex flex-row">
+  <div
+    className="rounded-2xl shadow-sm bg-white overflow-hidden flex flex-row"
+    style={{ maxHeight: '120px' }}
+  >
     <div className="w-full" style={imgStyle} />
     <div className="pt-3 pb-4 px-4 overflow-clip">
       <a
@@ -52,13 +55,17 @@ const List = ({ title, description, body, imgStyle }: ItemProps) => (
 
 export default function Post({
   item,
+  style = 'list',
   mode = 'view',
 }: {
   item: any
+  style?: 'list' | 'card'
   mode?: 'view' | 'edit'
 }) {
   const title: string =
-    item.indexing_metadata?.urlMetadata?.title ?? item.content.body
+    item.content.title ??
+    item.indexing_metadata?.urlMetadata?.title ??
+    item.content.body
   const description: string =
     item.indexing_metadata?.urlMetadata?.description ?? ''
   const image: string = item.indexing_metadata?.urlMetadata?.image ?? ''
@@ -76,34 +83,31 @@ export default function Post({
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
     aspectRatio: '1',
-    width: '100px',
-    height: '100px',
-    maxHeight: '100px',
+    width: '120px',
+    height: '120px',
+    maxHeight: '120px',
+    maxwidth: '120px',
   }
 
   return (
     <div className="group relative">
-      <Card
-        title={title}
-        description={description}
-        imgStyle={cardStyle}
-        body={item.content.body}
-      />
-      {mode === 'edit' && (
-        <EditButton className="absolute -top-2 -right-2 transition-opacity opacity-0 group-hover:opacity-100" />
+      {style === 'card' && (
+        <Card
+          title={title}
+          description={description}
+          imgStyle={cardStyle}
+          body={item.content.body}
+        />
       )}
-      {/* <div className="group relative">
+      {style === 'list' && (
         <List
           title={title}
           description={description}
           imgStyle={listStyle}
           body={item.content.body}
         />
-        {mode === 'edit' && (
-          <EditButton className="absolute -top-2 -right-2 transition-opacity opacity-0 group-hover:opacity-100" />
-        )}
-      </div>
-    </> */}
+      )}
+      {mode === 'edit' && <PostForm mode="edit" item={item} />}
     </div>
   )
 }

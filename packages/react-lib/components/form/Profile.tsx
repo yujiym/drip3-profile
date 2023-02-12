@@ -1,7 +1,5 @@
 'use client'
 import Image from 'next/image'
-import { useAtom } from 'jotai'
-import { modalAtom } from '@drip3/react-lib/atoms'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -39,8 +37,6 @@ const schema = z.object({
 type SchemaType = z.infer<typeof schema>
 
 export default function ProfileForm({ profile, uid }: Props) {
-  const [open, setOpen] = useAtom(modalAtom)
-
   const {
     register,
     handleSubmit,
@@ -66,7 +62,6 @@ export default function ProfileForm({ profile, uid }: Props) {
       },
     })
     toast('Profile updated', { icon: '👌' })
-    setTimeout(() => setOpen(false), 800)
   }
 
   return (
@@ -74,8 +69,6 @@ export default function ProfileForm({ profile, uid }: Props) {
       className="absolute right-0 top-0 opacity-0 group-hover:opacity-100 group-hover:transition-opacity"
       title="Edit profile"
       onSubmit={handleSubmit(onSubmit)}
-      open={open}
-      setOpen={setOpen}
     >
       <div className="pb-4">
         {profile?.details?.profile?.pfp ? (
@@ -96,12 +89,7 @@ export default function ProfileForm({ profile, uid }: Props) {
           <label htmlFor="pfp" className="text-right text-xs font-bold">
             Profile Picture URL
           </label>
-          <Input
-            id="pgp"
-            value={profile?.details?.profile?.pfp ?? ''}
-            className=""
-            {...register('pfp')}
-          />
+          <Input id="pgp" className="" {...register('pfp')} />
         </div>
       </div>
       <div className="pb-4">
@@ -111,7 +99,6 @@ export default function ProfileForm({ profile, uid }: Props) {
           </label>
           <Textarea
             id="description"
-            value={profile?.details?.profile?.description ?? ''}
             className=""
             {...register('description')}
           />

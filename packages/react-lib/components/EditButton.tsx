@@ -18,8 +18,6 @@ type Props = {
   children?: React.ReactNode
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
   submitText?: string
-  open: boolean
-  setOpen: (open: boolean) => void
 }
 
 export default function EditButton({
@@ -29,12 +27,10 @@ export default function EditButton({
   children,
   submitText = 'Save',
   onSubmit,
-  open,
-  setOpen,
   ...props
 }: Props) {
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog>
       <DialogTrigger asChild>
         <button
           className={cn(

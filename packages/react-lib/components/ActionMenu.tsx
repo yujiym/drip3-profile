@@ -9,6 +9,7 @@ import {
   LogOut,
   FileSearch,
   FolderSearch,
+  ClipboardCopy,
 } from 'lucide-react'
 import {
   Popover,
@@ -18,6 +19,16 @@ import {
 import { logout } from '@drip3/lib/orbis'
 import { getCerspanProfile } from '@drip3/lib/utils'
 import useSession from '@drip3/react-lib/hooks/useSession'
+import QrModal from '@drip3/react-lib/components/QrModal'
+import QRCode from 'react-qr-code'
+import UserName from '@drip3/react-lib/components/UserName'
+import { siteUrl } from '@drip3/lib/const'
+import { toast } from 'react-hot-toast'
+
+const copyToClipboard = (str: string) => {
+  navigator.clipboard.writeText(str)
+  toast('Copied', { icon: '📋' })
+}
 
 export default function ActionMenu({
   uid,
@@ -26,7 +37,7 @@ export default function ActionMenu({
   uid: string
   mode: 'view' | 'edit'
 }) {
-  const { did } = useSession()
+  const { did, isConnected } = useSession()
 
   return (
     <nav className="z-40 w-96 md:w-80 lg:w-96 fixed bottom-8 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0">
@@ -46,52 +57,75 @@ export default function ActionMenu({
           </PopoverTrigger>
           <PopoverContent className="bg-semiblack text-semiwhite fixed bottom-16 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0">
             <ul>
+              <li>
+                <Link
+                  href={getCerspanProfile(did)}
+                  className="flex items-center py-2 px-3 rounded-md"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <FileSearch size={16} className="mr-2.5" />
+                  View on Cerspan
+                </Link>
+              </li>
               {mode == 'edit' && (
+                <li>
+                  <Link
+                    href={`/${uid}`}
+                    className="flex items-center py-2 px-3 rounded-md"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <FolderSearch size={16} className="mr-2.5" />
+                    Preview profile
+                  </Link>
+                </li>
+              )}
+              {mode == 'view' && (
                 <>
                   <li>
-                    <Link
-                      href={`/${uid}`}
-                      className="flex items-center py-2 px-3 rounded-md"
-                      target="_blank"
-                      rel="noreferrer noopener"
+                    <QrModal
+                      title={<UserName uid={uid} className="text-center" />}
+                      description="my drip3 profile"
                     >
-                      <FolderSearch size={16} className="mr-2.5" />
-                      Preview profile
-                    </Link>
+                      <QRCode
+                        value={`${siteUrl}/${uid}`}
+                        bgColor="transparent"
+                        fgColor="var(--c-primary)"
+                      />
+                    </QrModal>
+                  </li>
+                  <li>
+                    <a
+                      className="flex items-center py-2 px-3 rounded-md cursor-pointer"
+                      onClick={() => copyToClipboard(`${siteUrl}/${uid}`)}
+                    >
+                      <ClipboardCopy size={16} className="mr-2.5" />
+                      Copy url
+                    </a>
                   </li>
                   <li>
                     <Link
-                      href={getCerspanProfile(did)}
+                      href="/me/edit"
                       className="flex items-center py-2 px-3 rounded-md"
-                      target="_blank"
-                      rel="noreferrer noopener"
                     >
-                      <FileSearch size={16} className="mr-2.5" />
-                      View on Cerspan
+                      <Edit size={16} className="mr-2.5" />
+                      Edit profile
                     </Link>
                   </li>
                 </>
               )}
-              {mode == 'view' && (
+              {isConnected && (
                 <li>
-                  <Link
-                    href="/me/edit"
+                  <button
                     className="flex items-center py-2 px-3 rounded-md"
+                    onClick={() => logout()}
                   >
-                    <Edit size={16} className="mr-2.5" />
-                    Edit profile
-                  </Link>
+                    <LogOut size={16} className="mr-2.5" />
+                    SignOut
+                  </button>
                 </li>
               )}
-              <li>
-                <button
-                  className="flex items-center py-2 px-3 rounded-md"
-                  onClick={() => logout()}
-                >
-                  <LogOut size={16} className="mr-2.5" />
-                  SignOut
-                </button>
-              </li>
             </ul>
           </PopoverContent>
         </Popover>

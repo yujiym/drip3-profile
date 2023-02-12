@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import ActionMenu from '@drip3/react-lib/components/ActionMenu'
 import UserPosts from '@drip3/react-lib/components/UserPosts'
+import UserName from '@drip3/react-lib/components/UserName'
 import ProfileForm from '@drip3/react-lib/components/form/Profile'
-import CreatePostButton from '@drip3/react-lib/components/CreatePostButton'
-import { splitName } from '@drip3/lib/utils'
+import PostForm from '@drip3/react-lib/components/form/Post'
 
 const SideSection = ({
   children,
@@ -13,7 +13,6 @@ const SideSection = ({
   children: React.ReactNode
   mode: 'view' | 'edit'
   uid: string
-  did: string
 }) => (
   <nav className="w-screen h-auto md:w-80 lg:w-96 md:sticky md:top-0 md:h-screen md:flex md:justify-between md:flex-col">
     <div className="md:flex-1">{children}</div>
@@ -41,8 +40,6 @@ export default function UserPage({
   posts,
   mode = 'view',
 }: Props) {
-  const displayName = splitName(uid)
-
   return (
     <div className="min-h-screen flex container mx-auto">
       <div className="flex w-full flex-col md:flex-row">
@@ -63,10 +60,7 @@ export default function UserPage({
                 style={{ backgroundSize: '7px 7px' }}
               />
             )}
-            <p className="text-2xl font-bold text-primary mt-8 text-center md:text-left">
-              {displayName[0]}
-              <span className="opacity-30">.{displayName[1]}</span>
-            </p>
+            <UserName uid={uid} className="mt-8 text-center md:text-left" />
             <p className="text-lg mt-8">
               {profile?.details?.profile?.description}
             </p>
@@ -77,14 +71,7 @@ export default function UserPage({
             <UserPosts posts={posts} mode={mode} />
           </div>
         </MainSection>
-        {mode === 'edit' && (
-          <CreatePostButton
-          // title="Create post"
-          // onSubmit={handleSubmit(onSubmit)}
-          // open={open}
-          // setOpen={setOpen}
-          ></CreatePostButton>
-        )}
+        {mode === 'edit' && <PostForm mode="create" />}
       </div>
     </div>
   )

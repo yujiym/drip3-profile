@@ -84,15 +84,15 @@ export async function updateProfile(props: object) {
   return await orbis.updateProfile({ ...props })
 }
 
-export async function createPost(props: any) {
-  return await orbis.createPost({ ...props })
+export async function createPost(obj: any) {
+  return await orbis.createPost({ context: contextRev, ...obj })
 }
 
-export async function efitProfile(streamId: string, obj: any) {
-  return await orbis.editPost(streamId, { ...obj })
+export async function editPost(streamId: string, obj: any) {
+  return await orbis.editPost(streamId, { context: contextRev, ...obj })
 }
 
-export async function deleteProfile(streamId: string) {
+export async function deletePost(streamId: string) {
   return await orbis.deletePost(streamId)
 }
 

@@ -21,12 +21,14 @@
   },
   "dependencies": {
     "@orbisclub/orbis-sdk": "^0.4.17",
+    "@radix-ui/react-dropdown-menu": "^2.0.2",
     "@radix-ui/react-menubar": "^1.0.0",
     "@radix-ui/react-popover": "^1.0.3",
     "ethers": "^5.7.2",
     "jotai": "^2.0.0",
     "react-hot-toast": "^2.4.0",
     "react-image-file-resizer": "^0.4.8",
+    "react-qr-code": "^2.0.11",
     "react-responsive-masonry": "^2.1.7",
     "wagmi": "^0.11.2"
   }

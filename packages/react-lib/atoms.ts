@@ -20,7 +20,7 @@ export const sessionAtom = atomWithReset<Session>({
 
 // util
 export const loadingAtom = atom<boolean>(false)
-export const modalAtom = atom<boolean>(false)
+export const profileModalAtom = atom<boolean>(false)
 
 // posts
 export const postsAtom = atom<any[]>([])
