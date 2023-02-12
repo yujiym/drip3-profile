@@ -43,6 +43,7 @@ export default function ProfileForm({ profile, uid }: Props) {
     formState: { errors },
   } = useForm<SchemaType>({
     defaultValues: {
+      pfp: profile?.details?.profile?.pfp ?? '',
       description: profile?.details?.profile?.description ?? '',
       color: profile?.details?.profile?.data?.drip3Config?.color ?? 'purple',
     },
