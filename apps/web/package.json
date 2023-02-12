@@ -16,6 +16,7 @@
     "@next/font": "^13.1.6",
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-radio-group": "^1.1.1",
+    "encoding": "^0.1.13",
     "ethers": "^5.7.2",
     "jotai": "^2.0.0",
     "lucide-react": "^0.108.0",
