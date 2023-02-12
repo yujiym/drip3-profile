@@ -3,7 +3,8 @@ import PostForm from '@drip3/react-lib/components/form/Post'
 const getImageUrl = (link: string): string =>
   link.match(/^https?:\/{2,}/)
     ? link
-    : `${link.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[0]}link`
+    : // @ts-ignore
+      `${link.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[0]}link`
 
 type ItemProps = {
   title: string
