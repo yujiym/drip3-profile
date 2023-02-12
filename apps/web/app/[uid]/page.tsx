@@ -1,6 +1,6 @@
 import { getUserDataByUid, getUserData } from '@drip3/lib/orbis'
 import UserPageComponent from '@drip3/react-lib/components/UserPage'
-import useUserColorHandler from '@drip3/react-lib/hooks/useUserColorHandler'
+// import useUserColorHandler from '@drip3/react-lib/hooks/useUserColorHandler'
 
 export default async function UserPage({ params }: { params: any }) {
   const { address, ensAvatar, did } = await getUserDataByUid(params.uid)
