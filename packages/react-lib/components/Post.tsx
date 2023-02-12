@@ -71,7 +71,7 @@ export default function Post({
     item.indexing_metadata?.urlMetadata?.description ?? ''
   const image: string = item.indexing_metadata?.urlMetadata?.image ?? ''
   const cardStyle = {
-    backgroundImage: `url(${getImageUrl(image)})`,
+    backgroundImage: `url(${image})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
@@ -79,7 +79,7 @@ export default function Post({
     maxHeight: '200px',
   }
   const listStyle = {
-    backgroundImage: `url(${getImageUrl(image)})`,
+    backgroundImage: `url(${image})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
