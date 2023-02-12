@@ -1,5 +1,6 @@
 import { Work_Sans, Silkscreen, Red_Hat_Mono } from '@next/font/google'
 import '@drip3/assets/css/main.css'
+import { Toaster } from '@drip3/react-lib/components/Toaster'
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -19,6 +20,15 @@ const mono = Red_Hat_Mono({
   variable: '--font-mono',
 })
 
+const toastOptions = {
+  style: {
+    border: 'none',
+    padding: '0.85rem 1.25rem',
+    color: '#f5f0e8',
+    background: '#363c59',
+  },
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -30,6 +40,7 @@ export default function RootLayout({
         className={`${workSans.variable} ${silkscreen.variable} ${mono.variable}`}
       >
         {children}
+        <Toaster position="top-right" toastOptions={toastOptions} />
       </body>
     </html>
   )

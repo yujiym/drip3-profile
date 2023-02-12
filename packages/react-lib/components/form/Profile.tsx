@@ -12,6 +12,8 @@ import {
   RadioGroupItem,
 } from '@drip3/react-lib/components/ui/RadioGroup'
 import { updateProfile } from '@drip3/lib/orbis'
+import { Input } from '@drip3/react-lib/components/ui/Input'
+import { toast } from 'react-hot-toast'
 
 const bgColors: string[] = [
   'bg-purple',
@@ -30,6 +32,7 @@ type Props = {
 
 const schema = z.object({
   description: z.string().max(1000),
+  pfp: z.string(),
   // @ts-ignore
   color: z.enum(colors),
 })
@@ -52,8 +55,9 @@ export default function ProfileForm({ profile, uid }: Props) {
 
   const onSubmit = async (data: SchemaType) => {
     await updateProfile({
-      ...profile.details.profile,
+      username: profile.details.profile.username,
       description: data.description,
+      pfp: data.pfp,
       data: {
         ...profile.details.profile.data,
         drip3Config: {
@@ -61,7 +65,8 @@ export default function ProfileForm({ profile, uid }: Props) {
         },
       },
     })
-    setOpen(false)
+    toast('Profile updated', { icon: '👌' })
+    setTimeout(() => setOpen(false), 800)
   }
 
   return (
@@ -87,6 +92,17 @@ export default function ProfileForm({ profile, uid }: Props) {
             style={{ backgroundSize: '7px 7px' }}
           />
         )}
+        <div className="mt-2">
+          <label htmlFor="pfp" className="text-right text-xs font-bold">
+            Profile Picture URL
+          </label>
+          <Input
+            id="pgp"
+            value={profile?.details?.profile?.pfp ?? ''}
+            className=""
+            {...register('pfp')}
+          />
+        </div>
       </div>
       <div className="pb-4">
         <div>

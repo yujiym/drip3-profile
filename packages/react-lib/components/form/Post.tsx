@@ -15,12 +15,13 @@ type Props = {
 }
 
 const schema = z.object({
-  description: z.string().max(500),
+  body: z.string().max(500),
+  title: z.string().max(140),
   color: z.enum(colors),
 })
 type SchemaType = z.infer<typeof schema>
 
-export default function ProfileForm({ profile, uid }: Props) {
+export default function PostForm({ profile, uid }: Props) {
   const [open, setOpen] = useAtom(modalAtom)
 
   const {

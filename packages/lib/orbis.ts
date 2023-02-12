@@ -2,8 +2,15 @@
 import { Orbis } from '@orbisclub/orbis-sdk'
 import { ethers } from 'ethers'
 import { contextRev } from '@drip3/lib/const'
+import Resizer from 'react-image-file-resizer'
 
 let orbis = new Orbis()
+
+let orbisWithPinta = new Orbis({
+  PINATA_GATEWAY: process.env.PINATA_GATEWAY,
+  PINATA_API_KEY: process.env.PINATA_API_KEY,
+  PINATA_SECRET_API_KEY: process.env.PINATA_SECRET_API_KEY,
+})
 
 const provider = new ethers.providers.InfuraProvider(
   1,
@@ -87,4 +94,26 @@ export async function efitProfile(streamId: string, obj: any) {
 
 export async function deleteProfile(streamId: string) {
   return await orbis.deletePost(streamId)
+}
+
+const resizeFile = (file: string, size = 960) =>
+  new Promise(resolve => {
+    Resizer.imageFileResizer(
+      file,
+      size, // MaxWidth
+      size, // MaxHeight
+      'JPEG',
+      80, // quolity
+      0, // rotation
+      uri => {
+        resolve(uri)
+      },
+      'base64'
+    )
+  })
+
+export async function uploadMedia(file: string, type: string) {
+  file.split('.').pop()
+  const resized = await resizeFile(file, 960)
+  return await orbisWithPinta.uploadMedia(resized)
 }

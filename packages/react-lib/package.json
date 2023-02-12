@@ -25,6 +25,9 @@
     "@radix-ui/react-popover": "^1.0.3",
     "ethers": "^5.7.2",
     "jotai": "^2.0.0",
+    "react-hot-toast": "^2.4.0",
+    "react-image-file-resizer": "^0.4.8",
+    "react-responsive-masonry": "^2.1.7",
     "wagmi": "^0.11.2"
   }
 }

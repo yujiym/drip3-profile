@@ -21,3 +21,6 @@ export const splitName = (str: string): string[] => {
   const domain = str.slice(indexLastDot + 1)
   return [name, domain]
 }
+
+export const getCerspanProfile = (did: string | undefined): string =>
+  !!did ? `https://cerscan.com/mainnet/profile/${did}` : ''

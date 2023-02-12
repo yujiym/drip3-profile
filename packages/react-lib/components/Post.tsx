@@ -82,19 +82,17 @@ export default function Post({
   }
 
   return (
-    <>
-      <div className="group relative">
-        <Card
-          title={title}
-          description={description}
-          imgStyle={cardStyle}
-          body={item.content.body}
-        />
-        {mode === 'edit' && (
-          <EditButton className="absolute -top-2 -right-2 transition-opacity opacity-0 group-hover:opacity-100" />
-        )}
-      </div>
-      <div className="group relative">
+    <div className="group relative">
+      <Card
+        title={title}
+        description={description}
+        imgStyle={cardStyle}
+        body={item.content.body}
+      />
+      {mode === 'edit' && (
+        <EditButton className="absolute -top-2 -right-2 transition-opacity opacity-0 group-hover:opacity-100" />
+      )}
+      {/* <div className="group relative">
         <List
           title={title}
           description={description}
@@ -105,6 +103,7 @@ export default function Post({
           <EditButton className="absolute -top-2 -right-2 transition-opacity opacity-0 group-hover:opacity-100" />
         )}
       </div>
-    </>
+    </> */}
+    </div>
   )
 }
