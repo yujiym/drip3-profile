@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import { useIsMounted } from 'usehooks-ts'
 
-export default function UserPageColorHandler({ color }: { color: string }) {
+export default function UserPageColorHandler(color: string) {
   const isMounted = useIsMounted()
 
   useEffect(() => {
