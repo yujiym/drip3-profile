@@ -38,11 +38,6 @@ export default function PostForm({ mode = 'edit', item }: Props) {
     const content = {
       title: data.title,
       body: data.link,
-      data: {
-        url: data.link,
-        domainUrl: data.link.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[1],
-        comment: data.comment ?? '',
-      },
     }
     if (mode === 'create') {
       await createPost(content)
