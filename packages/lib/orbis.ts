@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Orbis } from '@orbisclub/orbis-sdk'
 import { ethers } from 'ethers'
 import { contextRev } from '@drip3/lib/const'
@@ -11,6 +12,10 @@ const provider = new ethers.providers.InfuraProvider(
 
 export async function getIsConnected() {
   return await orbis.isConnected()
+}
+
+export async function logout() {
+  return await orbis.logout()
 }
 
 export async function getUserDataByUid(uid: string) {
@@ -70,4 +75,16 @@ export async function disconnect(): Promise<void> {
 
 export async function updateProfile(props: object) {
   return await orbis.updateProfile({ ...props })
+}
+
+export async function createPost(props: any) {
+  return await orbis.createPost({ ...props })
+}
+
+export async function efitProfile(streamId: string, obj: any) {
+  return await orbis.editPost(streamId, { ...obj })
+}
+
+export async function deleteProfile(streamId: string) {
+  return await orbis.deletePost(streamId)
 }

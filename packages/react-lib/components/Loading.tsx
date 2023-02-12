@@ -3,13 +3,13 @@ const LoadingText = ({ text = 'DRIPPING...' }) => (
     <h1
       data-text={text}
       className="loading font-ss text-4xl"
-      style={{ color: '#b4ace3' }}
+      style={{ color: '#ddd' }}
     >
       <style jsx>
         {`
           .loading {
             position: relative;
-            color: #b4ace3;
+            color: #ddd;
           }
 
           .loading::before {

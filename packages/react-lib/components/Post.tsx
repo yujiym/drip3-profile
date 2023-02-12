@@ -94,7 +94,6 @@ export default function Post({
           <EditButton className="absolute -top-2 -right-2 transition-opacity opacity-0 group-hover:opacity-100" />
         )}
       </div>
-      <br />
       <div className="group relative">
         <List
           title={title}

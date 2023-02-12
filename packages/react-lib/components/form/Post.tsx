@@ -7,21 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import EditButton from '@drip3/react-lib/components/EditButton'
 import { Textarea } from '@drip3/react-lib/components/ui/Textarea'
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from '@drip3/react-lib/components/ui/RadioGroup'
 import { updateProfile } from '@drip3/lib/orbis'
-
-const bgColors: string[] = [
-  'bg-purple',
-  'bg-orange',
-  'bg-magenda',
-  'bg-green',
-  'bg-blue',
-  'bg-yellow',
-]
-const colors: string[] = bgColors.map((cl: string) => cl.slice(3))
 
 type Props = {
   profile: any
@@ -29,8 +15,7 @@ type Props = {
 }
 
 const schema = z.object({
-  description: z.string().max(1000),
-  // @ts-ignore
+  description: z.string().max(500),
   color: z.enum(colors),
 })
 type SchemaType = z.infer<typeof schema>
@@ -66,8 +51,8 @@ export default function ProfileForm({ profile, uid }: Props) {
 
   return (
     <EditButton
-      className="absolute right-0 top-0 opacity-0 group-hover:opacity-100 group-hover:transition-opacity"
-      title="Edit profile"
+      className="absolute -top-2 -right-2 transition-opacity opacity-0 group-hover:opacity-100"
+      title="Edit post"
       onSubmit={handleSubmit(onSubmit)}
       open={open}
       setOpen={setOpen}
@@ -108,17 +93,6 @@ export default function ProfileForm({ profile, uid }: Props) {
         >
           Accent color
         </label>
-        <RadioGroup defaultValue={bgColors[0].slice(3)}>
-          {bgColors.map((cl: string) => (
-            <RadioGroupItem
-              key={`color-${cl.slice(3)}`}
-              value={cl.slice(3)}
-              id={cl.slice(3)}
-              className={cl}
-              {...register('color')}
-            />
-          ))}
-        </RadioGroup>
       </div>
     </EditButton>
   )

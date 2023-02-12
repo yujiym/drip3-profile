@@ -1,17 +1,19 @@
+'use client'
 import Link from 'next/link'
-import { CupSoda, HeartHandshake, Mail, Menu, Edit, LogOut } from 'lucide-react'
+import { CupSoda, HeartHandshake, Send, Menu, Edit, LogOut } from 'lucide-react'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@drip3/react-lib/components/ui/Popover'
+import { logout } from '@drip3/lib/orbis'
 
 export default function ActionMenu() {
   return (
     <nav className="z-40 w-96 fixed bottom-8 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0">
       <div className="shadow-lg rounded-full h-14 px-5 mx-5 bg-semiwhite flex justify-around items-center text-primary border border-primary/5 relative">
         <button className="items-center justify-center hover:bg-cream py-3 px-5 rounded-xl">
-          <Mail size={24} />
+          <Send size={24} />
         </button>
         <button className="justify-center hover:bg-cream py-3 px-5 rounded-xl">
           <CupSoda size={24} />
@@ -31,11 +33,14 @@ export default function ActionMenu() {
                   className="flex items-center py-2 px-3 rounded-md"
                 >
                   <Edit size={16} className="mr-1.5" />
-                  Edit
+                  Edit profile
                 </Link>
               </li>
               <li>
-                <button className="flex items-center py-2 px-3 rounded-md">
+                <button
+                  className="flex items-center py-2 px-3 rounded-md"
+                  onClick={() => logout()}
+                >
                   <LogOut size={16} className="mr-1.5" />
                   SignOut
                 </button>

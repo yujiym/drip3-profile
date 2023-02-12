@@ -31,7 +31,7 @@ const RadioGroupItem = React.forwardRef<
       <input
         type="radio"
         className={cn(
-          'h-6 w-6 rounded-full appearance-none checked:border-2 checked:border-gray-300 focus:outline-none cursor-pointer',
+          'h-6 w-6 rounded-full appearance-none border-2 border-transparent checked:border-slate-200 focus:outline-none cursor-pointer',
           className
         )}
         {...props}
