@@ -4,6 +4,7 @@ import UserPosts from '@drip3/react-lib/components/UserPosts'
 import UserName from '@drip3/react-lib/components/UserName'
 import ProfileForm from '@drip3/react-lib/components/form/Profile'
 import PostForm from '@drip3/react-lib/components/form/Post'
+import UserCredentials from '@drip3/react-lib/components/UserCredentials'
 
 const SideSection = ({
   children,
@@ -61,6 +62,7 @@ export default function UserPage({
               />
             )}
             <UserName uid={uid} className="mt-8 text-center md:text-left" />
+            <UserCredentials credential={credential} profile={profile} />
             <p className="text-lg mt-8">
               {profile?.details?.profile?.description}
             </p>

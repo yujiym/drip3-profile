@@ -46,12 +46,14 @@ const ConversationItem = (data: any) => {
 
   return (
     <a>
-      <li className="flex items-center border-violet-900/40 border-t py-5 px-6 relative">
+      <li className="flex items-center justify-start border-violet-900/40 border-t py-5 px-6 relative">
         <div
           className="bg-stripe w-9 h-9 rounded-avator mx-auto md:mx-0"
           style={{ backgroundSize: '4px 4px' }}
         />
-        <div className="ml-3">{shortAddress(recipient?.metadata?.address)}</div>
+        <div className="ml-3 flex-1">
+          {shortAddress(recipient?.metadata?.address)}
+        </div>
         <div className="absolute bottom-2 right-4 text-xs opacity-70">
           {unixToFromNow(data?.item?.last_message_timestamp)}
         </div>

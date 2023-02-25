@@ -63,10 +63,9 @@ export default function Post({
   style?: 'list' | 'card'
   mode?: 'view' | 'edit'
 }) {
-  const title: string =
-    item.content.title ??
-    item.indexing_metadata?.urlMetadata?.title ??
-    item.content.body
+  const title: string = !!item.content.title
+    ? item.content.title
+    : item.indexing_metadata?.urlMetadata?.title ?? item.content.body
   const description: string =
     item.indexing_metadata?.urlMetadata?.description ?? ''
   const image: string = item.indexing_metadata?.urlMetadata?.image ?? ''

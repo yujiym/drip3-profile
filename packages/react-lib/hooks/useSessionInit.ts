@@ -13,13 +13,11 @@ export default function useSessionInit() {
       setLoaded(false)
       const res = await getIsConnected()
       if (res.status === 200 && !session.did) {
-        console.log('0', session)
         setSession({
           ...session,
           did: res.did,
           details: res.details,
         })
-        console.log('1', session, res)
       }
       setLoaded(true)
     })()
