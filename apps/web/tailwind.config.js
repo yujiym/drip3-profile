@@ -36,6 +36,7 @@ module.exports = {
         yellow: `var(--c-yellow)`,
         semiwhite: `var(--c-semiwhite)`,
         semiblack: `var(--c-semiblack)`,
+        gray: `var(--c-gray)`,
         cream: `var(--c-cream)`,
       },
       fontFamily: {

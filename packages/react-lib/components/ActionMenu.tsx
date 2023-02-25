@@ -21,6 +21,7 @@ import { getCerspanProfile } from '@drip3/lib/utils'
 import useSession from '@drip3/react-lib/hooks/useSession'
 import QrModal from '@drip3/react-lib/components/QrModal'
 import QRCode from 'react-qr-code'
+import MessagePanel from '@drip3/react-lib/components/MessagePanel'
 import UserName from '@drip3/react-lib/components/UserName'
 import { siteUrl } from '@drip3/lib/const'
 import { toast } from 'react-hot-toast'
@@ -41,10 +42,12 @@ export default function ActionMenu({
 
   return (
     <nav className="z-40 w-96 md:w-80 lg:w-96 fixed bottom-8 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0">
-      <div className="shadow-lg rounded-full h-14 px-5 mx-5 bg-semiwhite flex justify-around items-center text-primary border border-primary/5 relative">
-        <button className="items-center justify-center hover:bg-cream py-3 px-5 rounded-xl">
-          <Send size={24} />
-        </button>
+      <div className="shadow-lg rounded-full h-14 px-5 mx-5 bg-semiwhite flex justify-around items-center text-primary border border-violet-900/5 relative">
+        <MessagePanel did={did}>
+          <button className="items-center justify-center hover:bg-cream py-3 px-5 rounded-xl">
+            <Send size={24} />
+          </button>
+        </MessagePanel>
         <button className="justify-center hover:bg-cream py-3 px-5 rounded-xl">
           <CupSoda size={24} />
         </button>

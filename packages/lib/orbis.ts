@@ -117,3 +117,7 @@ export async function uploadMedia(file: string, type: string) {
   const resized = await resizeFile(file, 960)
   return await orbisWithPinta.uploadMedia(resized)
 }
+
+export async function getUserConversations(did: string) {
+  return await orbis.getConversations({ did })
+}
