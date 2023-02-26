@@ -12,5 +12,8 @@
     "@slidev/theme-seriph": "*",
     "assets": "*",
     "slidev-theme-eloc": "^1.0.1"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.31.1"
   }
 }

@@ -23,7 +23,8 @@ import QrModal from '@drip3/react-lib/components/QrModal'
 import QRCode from 'react-qr-code'
 import MessagePanel from '@drip3/react-lib/components/MessagePanel'
 import UserName from '@drip3/react-lib/components/UserName'
-import TipContent from '@drip3/react-lib/components/TipContent'
+import TipPopup from '@drip3/react-lib/components/TipPopup'
+import MeetPopup from '@drip3/react-lib/components/MeetPopup'
 import { siteUrl } from '@drip3/lib/const'
 import { toast } from 'react-hot-toast'
 
@@ -53,13 +54,18 @@ export default function ActionMenu({
           <PopoverTrigger className="hover:bg-cream py-3 px-5 rounded-xl">
             <CupSoda size={24} />
           </PopoverTrigger>
-          <PopoverContent className="fixed bottom-16 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0 whitespace-nowrap">
-            <TipContent uid={uid} mode={mode} />
+          <PopoverContent className="fixed bottom-16 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0 whitespace-nowrap bg-semiblack text-semiwhite">
+            <TipPopup uid={uid} mode={mode} />
           </PopoverContent>
         </Popover>
-        <button className="justify-center hover:bg-cream py-3 px-5 rounded-xl">
-          <HeartHandshake size={24} />
-        </button>
+        <Popover>
+          <PopoverTrigger className="hover:bg-cream py-3 px-5 rounded-xl">
+            <HeartHandshake size={24} />
+          </PopoverTrigger>
+          <PopoverContent className="fixed bottom-16 md:sticky min-w-[280px] left-1/2 -ml-48 md:left-0 md:ml-0 whitespace-nowrap bg-semiblack text-semiwhite">
+            <MeetPopup uid={uid} mode={mode} />
+          </PopoverContent>
+        </Popover>
         <Popover>
           <PopoverTrigger className="hover:bg-cream py-3 px-5 rounded-xl">
             <Menu size={24} />

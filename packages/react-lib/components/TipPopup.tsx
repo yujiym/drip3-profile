@@ -10,7 +10,7 @@ const schema = z.object({
 })
 type SchemaType = z.infer<typeof schema>
 
-export default function TipContent({
+export default function TipPopup({
   uid,
   mode,
 }: {
@@ -43,7 +43,7 @@ export default function TipContent({
           <X size={16} className="mx-4" />
           <input
             type="number"
-            className="border-violet-900/10 border rounded-md h-10 w-16 px-2 text-center"
+            className="border-violet-900/10 border rounded-md h-10 w-16 px-2 text-center text-semiwhite bg-slate-500"
             {...register('num')}
           />
         </div>

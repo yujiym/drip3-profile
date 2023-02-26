@@ -35,7 +35,7 @@ export default function UserEditPage() {
           ensName ? (
             <PageContent did={did} uid={ensName} />
           ) : (
-            <ErrorScreen text="ENS is currently required">
+            <ErrorScreen text="ENS is required">
               <button
                 className="bg-primary text-semiwhite px-8 py-3 rounded-full hover:brightness-110 font-bold"
                 onClick={() => handleDisconnect()}
