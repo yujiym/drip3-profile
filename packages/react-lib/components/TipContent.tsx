@@ -1,5 +1,4 @@
 'use client'
-import { useState } from 'react'
 import useSession from '@drip3/react-lib/hooks/useSession'
 import { CupSoda, X } from 'lucide-react'
 import { useForm } from 'react-hook-form'
@@ -22,7 +21,7 @@ export default function TipContent({
   const {
     register,
     handleSubmit,
-    getValues,
+    watch,
     formState: { errors },
   } = useForm<SchemaType>({
     defaultValues: {
@@ -52,7 +51,7 @@ export default function TipContent({
           className="bg-primary text-semiwhite w-full rounded-full h-12 mt-6"
           type="submit"
         >
-          Tip ${getValues('num') * 5}
+          Tip ${watch('num') * 5}
         </button>
       </form>
     </div>
