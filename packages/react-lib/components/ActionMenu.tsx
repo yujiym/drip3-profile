@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import {
   CupSoda,
   HeartHandshake,
@@ -31,6 +32,12 @@ import { toast } from 'react-hot-toast'
 const copyToClipboard = (str: string) => {
   navigator.clipboard.writeText(str)
   toast('Copied', { icon: '📋' })
+}
+
+const handleLogout = async () => {
+  await logout()
+  const router = useRouter()
+  if (router.pathname === '/me/edit') router.push('/')
 }
 
 export default function ActionMenu({
@@ -134,7 +141,7 @@ export default function ActionMenu({
                 <li>
                   <button
                     className="flex items-center py-2 px-3 rounded-md"
-                    onClick={() => logout()}
+                    onClick={() => handleLogout()}
                   >
                     <LogOut size={16} className="mr-2.5" />
                     SignOut
