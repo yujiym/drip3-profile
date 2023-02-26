@@ -35,6 +35,9 @@ theme: default
   ul {
     font-size: 1.75rem;
     text-align: left;
+    li li {
+      font-size: 1.5rem;
+    }
   }
 }
 </style>
@@ -92,6 +95,15 @@ __-> Integrate other protocols.__
 - **DRIP3 Profile α** : Brushup with limited people
 - **DRIP3 Profile Open β** : Beginning of April
 - **Public release** : 2Q 2023
+
+---
+
+## **☺️** Member
+
+- Yuji Yamaguchi
+  - Frontend dev. Developing web3 frontend for 1.5 years.
+  - I'm looking for EthTokyo team / project
+  - Current area of interest: ZKP, Real world asset & oracle
 
 ---
 layout: center
