@@ -22,5 +22,5 @@ export const splitName = (str: string): string[] => {
   return [name, domain]
 }
 
-export const getCerspanProfile = (did: string | undefined): string =>
+export const getCerscanProfile = (did: string | undefined): string =>
   !!did ? `https://cerscan.com/mainnet/profile/${did}` : ''

@@ -17,12 +17,13 @@ import {
   PopoverTrigger,
 } from '@drip3/react-lib/components/ui/Popover'
 import { logout } from '@drip3/lib/orbis'
-import { getCerspanProfile } from '@drip3/lib/utils'
+import { getCerscanProfile } from '@drip3/lib/utils'
 import useSession from '@drip3/react-lib/hooks/useSession'
 import QrModal from '@drip3/react-lib/components/QrModal'
 import QRCode from 'react-qr-code'
 import MessagePanel from '@drip3/react-lib/components/MessagePanel'
 import UserName from '@drip3/react-lib/components/UserName'
+import TipContent from '@drip3/react-lib/components/TipContent'
 import { siteUrl } from '@drip3/lib/const'
 import { toast } from 'react-hot-toast'
 
@@ -48,9 +49,14 @@ export default function ActionMenu({
             <Send size={24} />
           </button>
         </MessagePanel>
-        <button className="justify-center hover:bg-cream py-3 px-5 rounded-xl">
-          <CupSoda size={24} />
-        </button>
+        <Popover>
+          <PopoverTrigger className="hover:bg-cream py-3 px-5 rounded-xl">
+            <CupSoda size={24} />
+          </PopoverTrigger>
+          <PopoverContent className="fixed bottom-16 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0 whitespace-nowrap">
+            <TipContent uid={uid} mode={mode} />
+          </PopoverContent>
+        </Popover>
         <button className="justify-center hover:bg-cream py-3 px-5 rounded-xl">
           <HeartHandshake size={24} />
         </button>
@@ -58,17 +64,17 @@ export default function ActionMenu({
           <PopoverTrigger className="hover:bg-cream py-3 px-5 rounded-xl">
             <Menu size={24} />
           </PopoverTrigger>
-          <PopoverContent className="bg-semiblack text-semiwhite fixed bottom-16 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0">
+          <PopoverContent className="bg-semiblack text-semiwhite fixed bottom-16 md:sticky left-1/2 -ml-48 md:left-0 md:ml-0 whitespace-nowrap">
             <ul>
               <li>
                 <Link
-                  href={getCerspanProfile(did)}
+                  href={getCerscanProfile(did)}
                   className="flex items-center py-2 px-3 rounded-md"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   <FileSearch size={16} className="mr-2.5" />
-                  View on Cerspan
+                  View on Cerscan
                 </Link>
               </li>
               {mode == 'edit' && (
